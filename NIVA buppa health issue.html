@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Niva Bupa ReAssure 3.0 – Himanshu</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;overflow-x:hidden;background:#000;}
+
+/* ══ EACH SECTION = full screen ══ */
+section{
+  min-height:100vh;width:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:48px 20px 60px;
+  position:relative;overflow:hidden;
+}
+
+/* ══ TOP PROGRESS ══ */
+#topbar{
+  position:fixed;top:0;left:0;right:0;height:4px;
+  background:rgba(255,255,255,0.15);z-index:999;
+}
+#topfill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#00b4d8,#f4a61d);
+  transition:width 0.4s;
+}
+
+/* ══ DOT NAV ══ */
+#dots{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:9px;z-index:999;
+}
+.dot{
+  width:9px;height:9px;border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  border:2px solid rgba(255,255,255,0.4);
+  cursor:pointer;transition:all 0.3s;
+}
+.dot.on{background:#f4a61d;border-color:#f4a61d;transform:scale(1.4);}
+
+/* ══ SCROLL HINT ══ */
+.scroll-hint{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.45);font-size:0.72rem;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  animation:bob 1.8s ease-in-out infinite;
+}
+.scroll-hint span{font-size:1.1rem;}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(5px);}}
+
+/* ═══════════════════════════════
+   S1 – HERO
+═══════════════════════════════ */
+#s1{background:radial-gradient(ellipse at 30% 50%,#0a2d50 0%,#000 65%);}
+.orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  filter:blur(80px);opacity:0.25;
+}
+.orb1{width:420px;height:420px;background:#0077c8;top:-100px;left:-80px;animation:drift 8s ease-in-out infinite alternate;}
+.orb2{width:320px;height:320px;background:#f4a61d;bottom:-60px;right:-60px;animation:drift 10s ease-in-out infinite alternate-reverse;}
+@keyframes drift{to{transform:translate(25px,20px);}}
+
+.logo-pill{
+  background:#fff;border-radius:14px;padding:8px 22px;
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:22px;
+  box-shadow:0 6px 30px rgba(0,119,200,0.3);
+}
+.logo-pill .bn{font-size:1.5rem;font-weight:900;color:#0077c8;font-family:'Baloo 2',cursive;}
+.logo-pill .bn span{color:#00b4d8;}
+.logo-pill .bt{font-size:0.65rem;color:#555;border-left:2px solid #ddd;padding-left:10px;line-height:1.4;}
+
+.h1{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(2rem,7vw,3.8rem);
+  font-weight:900;color:#fff;text-align:center;line-height:1.15;
+}
+.h1 .g{color:#f4a61d;}
+.h2{color:rgba(255,255,255,0.65);font-size:clamp(0.85rem,2.5vw,1.1rem);text-align:center;margin-top:10px;}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;}
+.chip{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;border-radius:30px;padding:7px 16px;
+  font-size:0.78rem;backdrop-filter:blur(4px);
+}
+
+.cta-main{
+  margin-top:30px;
+  background:linear-gradient(135deg,#f4a61d,#e8920a);
+  color:#fff;border:none;border-radius:50px;
+  padding:15px 38px;font-size:1rem;font-weight:700;
+  font-family:'Poppins',sans-serif;cursor:pointer;
+  box-shadow:0 8px 28px rgba(244,166,29,0.45);
+  animation:glow 2s ease-in-out infinite;
+  text-decoration:none;display:inline-block;
+}
+@keyframes glow{0%,100%{box-shadow:0 8px 28px rgba(244,166,29,0.45);}50%{box-shadow:0 8px 48px rgba(244,166,29,0.75);}}
+
+/* ═══════════════════════════════
+   S2 – FEATURES
+═══════════════════════════════ */
+#s2{background:linear-gradient(160deg,#0d1b2a,#1b3a4b);}
+.sec-title{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;
+  color:#fff;text-align:center;margin-bottom:6px;
+}
+.sec-title span{color:#00b4d8;}
+.sec-sub{color:rgba(255,255,255,0.55);text-align:center;font-size:0.82rem;margin-bottom:28px;}
+
+.feat-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:13px;max-width:560px;width:100%;
+}
+.fc{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:16px;padding:18px 14px;text-align:center;
+  transition:transform 0.2s,background 0.2s;
+}
+.fc:hover{transform:translateY(-4px);background:rgba(255,255,255,0.12);}
+.fc .fi{font-size:1.8rem;margin-bottom:6px;}
+.fc .fn{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;color:#f4a61d;
+}
+.fc .ft{color:#fff;font-weight:600;font-size:0.82rem;margin:3px 0;}
+.fc .fs{color:rgba(255,255,255,0.5);font-size:0.7rem;}
+
+/* ═══════════════════════════════
+   S3 – PLANS
+═══════════════════════════════ */
+#s3{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);}
+.plans-wrap{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;max-width:560px;width:100%;
+}
+.pc{
+  background:rgba(255,255,255,0.07);
+  border:2px solid rgba(255,255,255,0.12);
+  border-radius:18px;padding:20px 14px;text-align:center;
+  transition:transform 0.2s,border-color 0.2s;
+}
+.pc:hover{transform:translateY(-4px);}
+.pc.hot{
+  background:linear-gradient(135deg,rgba(0,119,200,0.45),rgba(0,180,216,0.35));
+  border-color:rgba(0,180,216,0.6);
+  box-shadow:0 0 30px rgba(0,180,216,0.25);
+}
+.pc .pi{font-size:1.9rem;margin-bottom:6px;}
+.pc .pn{color:#fff;font-weight:700;font-size:1rem;margin-bottom:8px;}
+.pc .pf{color:rgba(255,255,255,0.6);font-size:0.72rem;line-height:1.8;}
+.pc .ptag{
+  display:inline-block;margin-top:9px;
+  background:#f4a61d;color:#fff;
+  border-radius:20px;padding:2px 12px;font-size:0.65rem;font-weight:700;
+}
+
+/* ═══════════════════════════════
+   S4 – BENEFITS
+═══════════════════════════════ */
+#s4{background:linear-gradient(160deg,#012a4a,#023e6e);}
+.ben-list{
+  display:flex;flex-direction:column;gap:11px;
+  max-width:560px;width:100%;
+}
+.bl{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;padding:14px 16px;
+  transition:transform 0.2s,background 0.2s;
+}
+.bl:hover{transform:translateX(5px);background:rgba(255,255,255,0.12);}
+.bl .bi2{font-size:1.5rem;flex-shrink:0;}
+.bl h4{color:#fff;font-size:0.88rem;font-weight:600;margin-bottom:2px;}
+.bl p{color:rgba(255,255,255,0.55);font-size:0.72rem;line-height:1.5;}
+
+/* ═══════════════════════════════
+   S5 – TRUST
+═══════════════════════════════ */
+#s5{background:linear-gradient(135deg,#0d1b2a,#1a2f3a);}
+.trust-row{
+  display:flex;gap:20px;flex-wrap:wrap;
+  justify-content:center;margin-bottom:28px;
+}
+.tn{text-align:center;}
+.tn .tb{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#00b4d8;
+}
+.tn .tl{color:rgba(255,255,255,0.55);font-size:0.72rem;margin-top:2px;}
+
+.qbox{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;padding:22px;max-width:500px;
+  text-align:center;
+}
+.qbox .qm{font-size:2rem;color:#f4a61d;line-height:1;margin-bottom:8px;}
+.qbox p{color:rgba(255,255,255,0.8);font-size:clamp(0.8rem,2vw,0.9rem);line-height:1.7;}
+.qbox .qn{color:#00b4d8;font-size:0.75rem;font-weight:600;margin-top:10px;}
+
+/* ═══════════════════════════════
+   S6 – CONTACT CTA
+═══════════════════════════════ */
+#s6{background:radial-gradient(ellipse at 50% 30%,#012a4a,#000);}
+#s6::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 60% 40%,rgba(244,166,29,0.15),transparent 60%);
+}
+.contact-card{
+  position:relative;z-index:2;
+  background:#fff;border-radius:26px;
+  padding:34px 28px;max-width:440px;width:100%;
+  text-align:center;
+  box-shadow:0 24px 70px rgba(0,0,0,0.5);
+}
+.contact-card .albl{
+  font-size:0.68rem;font-weight:700;letter-spacing:2px;
+  color:#0077c8;text-transform:uppercase;margin-bottom:5px;
+}
+.contact-card .aname{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(2rem,6vw,2.8rem);font-weight:900;color:#012a4a;
+}
+.contact-card .arole{color:#666;font-size:0.8rem;margin-bottom:22px;line-height:1.6;}
+
+.irow{
+  display:flex;align-items:center;gap:12px;
+  background:#e8f4fd;border-radius:13px;padding:12px 15px;
+  margin-bottom:10px;text-align:left;
+}
+.irow .ic{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,#0077c8,#00b4d8);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.irow .il{font-size:0.62rem;color:#999;margin-bottom:1px;}
+.irow .iv{font-size:0.92rem;font-weight:700;color:#012a4a;}
+
+.bcall{
+  display:block;width:100%;
+  background:linear-gradient(135deg,#f4a61d,#e8920a);
+  color:#fff;border:none;border-radius:13px;
+  padding:15px;font-size:0.95rem;font-weight:700;
+  font-family:'Poppins',sans-serif;cursor:pointer;
+  text-decoration:none;margin-top:16px;
+  animation:glow 2s ease-in-out infinite;
+}
+.bwa{
+  display:block;width:100%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  color:#fff;border:none;border-radius:13px;
+  padding:13px;font-size:0.88rem;font-weight:700;
+  font-family:'Poppins',sans-serif;cursor:pointer;
+  text-decoration:none;margin-top:8px;
+}
+.bemail{
+  display:block;width:100%;
+  background:transparent;border:2px solid #0077c8;
+  color:#0077c8;border-radius:13px;
+  padding:11px;font-size:0.85rem;font-weight:600;
+  font-family:'Poppins',sans-serif;cursor:pointer;
+  text-decoration:none;margin-top:8px;
+  transition:all 0.2s;
+}
+.bemail:hover{background:#0077c8;color:#fff;}
+
+.tstrip{
+  display:flex;justify-content:center;gap:14px;
+  flex-wrap:wrap;margin-top:14px;
+}
+.ti{font-size:0.65rem;color:#999;display:flex;align-items:center;gap:3px;}
+
+/* ══ FADE-IN ON SCROLL ══ */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div id="topbar"><div id="topfill"></div></div>
+<div id="dots">
+  <div class="dot on" onclick="scrollTo(0)"></div>
+  <div class="dot" onclick="scrollTo(1)"></div>
+  <div class="dot" onclick="scrollTo(2)"></div>
+  <div class="dot" onclick="scrollTo(3)"></div>
+  <div class="dot" onclick="scrollTo(4)"></div>
+  <div class="dot" onclick="scrollTo(5)"></div>
+</div>
+
+<!-- ═══ S1 – HERO ═══ -->
+<section id="s1">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+
+  <div class="logo-pill fade-in">
+    <div class="bn">niva <span>bupa</span></div>
+    <div class="bt">Health<br/>Insurance</div>
+  </div>
+
+  <div class="h1 fade-in">Apni Family Ko Do<br/><span class="g">Unlimited Coverage ♾️</span></div>
+  <div class="h2 fade-in">Introducing <strong>ReAssure 3.0</strong> – India ka sabse powerful health plan</div>
+
+  <div class="chips fade-in">
+    <div class="chip">♾️ Unlimited Sum Insured</div>
+    <div class="chip">🌍 Worldwide Coverage</div>
+    <div class="chip">✅ Day 1 Pre-Existing</div>
+    <div class="chip">💊 OPD Covered</div>
+  </div>
+
+  <a class="cta-main fade-in" href="#s6">Aaj Hi Puchho →</a>
+
+  <div class="scroll-hint"><span>↓</span>Scroll karo</div>
+</section>
+
+<!-- ═══ S2 – FEATURES ═══ -->
+<section id="s2">
+  <div class="sec-title fade-in">Top <span>Features</span></div>
+  <div class="sec-sub fade-in">Jo koi aur nahi deta – sirf ReAssure 3.0!</div>
+
+  <div class="feat-grid">
+    <div class="fc fade-in">
+      <div class="fi">♾️</div>
+      <div class="fn">∞</div>
+      <div class="ft">Unlimited Cover</div>
+      <div class="fs">Koi limit nahi!</div>
+    </div>
+    <div class="fc fade-in">
+      <div class="fi">🏥</div>
+      <div class="fn">10K+</div>
+      <div class="ft">Cashless Hospitals</div>
+      <div class="fs">Poore India mein</div>
+    </div>
+    <div class="fc fade-in">
+      <div class="fi">⚡</div>
+      <div class="fn">48 Hrs</div>
+      <div class="ft">Claim Settlement</div>
+      <div class="fs">Super fast process</div>
+    </div>
+    <div class="fc fade-in">
+      <div class="fi">💰</div>
+      <div class="fn">5 Yr</div>
+      <div class="ft">Cash Bag Benefit</div>
+      <div class="fs">Savings + protection</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="color:rgba(255,255,255,0.35)"><span>↓</span></div>
+</section>
+
+<!-- ═══ S3 – PLANS ═══ -->
+<section id="s3">
+  <div class="sec-title fade-in">4 Plans – <span style="color:#f4a61d;">Apna Chuno</span></div>
+  <div class="sec-sub fade-in">Har budget ke liye, har family ke liye</div>
+
+  <div class="plans-wrap">
+    <div class="pc fade-in">
+      <div class="pi">🥈</div>
+      <div class="pn">Classic</div>
+      <div class="pf">General Room<br/>Road Ambulance<br/>Basic Coverage</div>
+    </div>
+    <div class="pc fade-in">
+      <div class="pi">🥇</div>
+      <div class="pn">Select</div>
+      <div class="pf">Twin Sharing<br/>Air Ambulance<br/>OPD Benefits</div>
+      <div class="ptag">Popular</div>
+    </div>
+    <div class="pc hot fade-in">
+      <div class="pi">💎</div>
+      <div class="pn">Elite</div>
+      <div class="pf">Any Room<br/>Unlimited Ambulance<br/>Max Benefits!</div>
+      <div class="ptag">Best Value</div>
+    </div>
+    <div class="pc fade-in">
+      <div class="pi">🖤</div>
+      <div class="pn">Black</div>
+      <div class="pf">Suite Room<br/>Worldwide Cover<br/>Premium Care</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="color:rgba(255,255,255,0.35)"><span>↓</span></div>
+</section>
+
+<!-- ═══ S4 – BENEFITS ═══ -->
+<section id="s4">
+  <div class="sec-title fade-in">Khaas <span>Benefits</span></div>
+  <div class="sec-sub fade-in">ReAssure 3.0 ke anokhe fayde</div>
+
+  <div class="ben-list">
+    <div class="bl fade-in">
+      <div class="bi2">📅</div>
+      <div><h4>Day 1 Pre-Existing Cover</h4><p>Pehle se bimari ho tab bhi – pehle din se coverage!</p></div>
+    </div>
+    <div class="bl fade-in">
+      <div class="bi2">🌍</div>
+      <div><h4>Borderless Coverage</h4><p>Duniya mein kahin bhi ilaaj karwao – India ke bahar bhi!</p></div>
+    </div>
+    <div class="bl fade-in">
+      <div class="bi2">💊</div>
+      <div><h4>OPD + Medicines Covered</h4><p>Doctor fees, tests, medicines – sab included</p></div>
+    </div>
+    <div class="bl fade-in">
+      <div class="bi2">🧠</div>
+      <div><h4>Mental Wellness Cover</h4><p>Mental health bhi covered – kyunki mann bhi zaroori hai</p></div>
+    </div>
+    <div class="bl fade-in">
+      <div class="bi2">🚑</div>
+      <div><h4>Air Ambulance</h4><p>Emergency mein kahin bhi – Elite & Black mein unlimited</p></div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" style="color:rgba(255,255,255,0.35)"><span>↓</span></div>
+</section>
+
+<!-- ═══ S5 – TRUST ═══ -->
+<section id="s5">
+  <div class="sec-title fade-in">India Ka <span style="color:#f4a61d;">Bharosa</span></div>
+  <div class="sec-sub fade-in">Crores ne trust kiya – aap bhi karo</div>
+
+  <div class="trust-row">
+    <div class="tn fade-in"><div class="tb">9.7M+</div><div class="tl">Happy Customers</div></div>
+    <div class="tn fade-in"><div class="tb">96%</div><div class="tl">Claim Ratio</div></div>
+    <div class="tn fade-in"><div class="tb">₹2800Cr+</div><div class="tl">Claims Paid</div></div>
+  </div>
+
+  <div class="qbox fade-in">
+    <div class="qm">"</div>
+    <p>Mere papa ki heart surgery mein <strong>₹8 lakh ka bill aaya</strong> – Niva Bupa ne poora settle kar diya! Ek bhi rupya nahi dena pada. Himanshu bhai ne guide kiya tha – bahut shukriya! 🙏</p>
+    <div class="qn">— Ramesh S., Pune • Elite Plan Member</div>
+  </div>
+
+  <div class="scroll-hint" style="color:rgba(255,255,255,0.35)"><span>↓</span>Contact</div>
+</section>
+
+<!-- ═══ S6 – CONTACT ═══ -->
+<section id="s6">
+  <div class="contact-card fade-in">
+    <div class="albl">🛡️ Your Trusted Advisor</div>
+    <div class="aname">Himanshu</div>
+    <div class="arole">
+      <strong>Niva Bupa Certified Health Insurance Advisor</strong><br/>
+      <em>"Aapki family ki suraksha – meri zimmedaari"</em>
+    </div>
+
+    <div class="irow">
+      <div class="ic">📞</div>
+      <div>
+        <div class="il">Call / WhatsApp</div>
+        <div class="iv">8149991422</div>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ic">📧</div>
+      <div>
+        <div class="il">Email</div>
+        <div class="iv">himanshu81499@gmail.com</div>
+      </div>
+    </div>
+
+    <a class="bcall" href="tel:8149991422">📞 Abhi Call Karein – FREE Consultation</a>
+    <a class="bwa" href="https://wa.me/918149991422?text=Namaste%20Himanshu%20bhai%2C%20mujhe%20Niva%20Bupa%20ReAssure%203.0%20ke%20baare%20mein%20jaanna%20hai." target="_blank">💬 WhatsApp Karein</a>
+    <a class="bemail" href="mailto:himanshu81499@gmail.com">✉️ Email Bhejein</a>
+
+    <div class="tstrip">
+      <div class="ti">✅ Free Consultation</div>
+      <div class="ti">🔒 100% Secure</div>
+      <div class="ti">⚡ Instant Reply</div>
+    </div>
+  </div>
+</section>
+
+<script>
+const sections = Array.from(document.querySelectorAll('section'));
+const dots = Array.from(document.querySelectorAll('.dot'));
+const fill = document.getElementById('topfill');
+
+// Smooth scroll to section
+window.scrollTo = function(idx){
+  sections[idx].scrollIntoView({behavior:'smooth'});
+};
+
+// Intersection Observer – fade in elements + update dots
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      // Fade in children
+      e.target.querySelectorAll('.fade-in').forEach((el,i)=>{
+        setTimeout(()=>el.classList.add('visible'), i*100);
+      });
+      // Update dots & progress
+      const idx = sections.indexOf(e.target);
+      if(idx>=0){
+        dots.forEach(d=>d.classList.remove('on'));
+        dots[idx]&&dots[idx].classList.add('on');
+        fill.style.width = ((idx+1)/sections.length*100)+'%';
+      }
+    }
+  });
+},{threshold:0.4});
+
+sections.forEach(s=>io.observe(s));
+
+// First section visible on load
+sections[0].querySelectorAll('.fade-in').forEach((el,i)=>{
+  setTimeout(()=>el.classList.add('visible'),200+i*120);
+});
+</script>
+</body>
+</html>
